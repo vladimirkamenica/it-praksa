@@ -1,14 +1,46 @@
 <template>
-  <base-nav style="display: none;"
+ <base-nav
     container-classes="container-fluid"
     class="navbar-top border-bottom navbar-expand"
-    :class="{ 'bg-info navbar-dark': type === 'default' }"
+    :class="{ 'bg-success navbar-dark': type === 'default' }"
   >
     <!-- Search form -->
     
+    
+    
     <!-- Navbar links -->
-    
-    
+    <ul class="navbar-nav align-items-center ml-auto">
+      <li class="nav-item d-xl-none ">
+        <!-- Sidenav toggler -->
+        <div
+          class="pr-3 sidenav-toggler"
+          :class="{
+            active: $sidebar.showSidebar,
+            'sidenav-toggler-dark': type === 'default',
+            'sidenav-toggler-light': type === 'light',
+          }"
+          @click="toggleSidebar"
+        >
+          <div class="sidenav-toggler-inner">
+            <i class="sidenav-toggler-line"></i>
+            <i class="sidenav-toggler-line"></i>
+            <i class="sidenav-toggler-line"></i>
+          </div>
+        </div>
+      </li>
+      
+      <base-dropdown
+        class="nav-item"
+        tag="li"
+        title-classes="nav-link"
+        title-tag="a"
+        icon="ni ni-bell-55"
+        menu-classes="dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden"
+      >
+       
+      </base-dropdown>
+    </ul>
+  
   </base-nav>
 </template>
 <script>

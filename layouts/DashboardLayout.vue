@@ -4,6 +4,7 @@
     <side-bar>
       <template slot-scope="props" slot="links">
         <sidebar-item
+        opened
           :link="{
             name: 'Početna',
             icon: 'ni ni-shop text-primary',
@@ -32,6 +33,7 @@
           /> 
         </sidebar-item> -->
         <sidebar-item
+        opened
           :link="{
             name: 'IT saveti',
             path: '/it-saveti/_itsaveti.vue',
@@ -39,6 +41,7 @@
           }"
         />
         <sidebar-item
+        opened
           :link="{
             name: 'IT vesti',
             path: '/it-vesti/itvesti',
@@ -46,6 +49,7 @@
           }"
         />
         <sidebar-item
+        opened
           :link="{
             name: 'Testiranje',
             icon: 'fas fa-check',
@@ -55,6 +59,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'PHP programiranje',
             icon: 'fab fa-php',
@@ -64,6 +69,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Web design',
             icon: 'far fa-object-group',
@@ -73,6 +79,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'HTML',
             icon: 'fab fa-html5',
@@ -82,6 +89,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'CSS',
             icon: 'fab fa-css3',
@@ -91,6 +99,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Osnove programiranja',
             icon: 'fa fa-laptop-code',
@@ -100,6 +109,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: '.NET programiranje',
             icon: 'fa fa-server',
@@ -109,6 +119,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'JAVA programiranje',
             icon: 'fab fa-java',
@@ -118,6 +129,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Grafički dizajn',
             icon: 'fa fa-palette',
@@ -127,6 +139,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Laravel',
             icon: 'fab fa-laravel',
@@ -136,6 +149,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Node.js',
             icon: 'fab fa-node',
@@ -145,6 +159,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Vue.js',
             icon: 'fab fa-vuejs',
@@ -154,6 +169,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Bootstrap',
             icon: 'ni ni-align-left-2 text-default',
@@ -163,6 +179,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'SEO',
             icon: 'fab fa-searchengin',
@@ -172,6 +189,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Digitalni marketing',
             icon: 'fab fa-digital-ocean',
@@ -181,6 +199,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'O nama',
             icon: 'far fa-address-card',
@@ -190,6 +209,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Marketing',
             icon: 'fa fa-bullhorn',
@@ -199,6 +219,7 @@
         </sidebar-item>
 
         <sidebar-item
+        opened
           :link="{
             name: 'Kontakt',
             icon: 'fa fa-headset',
@@ -264,6 +285,7 @@
       ></dashboard-navbar>
 
       <div @click="$sidebar.displaySidebar(false)">
+        
         <nuxt></nuxt>
       </div>
       <content-footer v-if="!$route.meta.hideFooter"></content-footer>
@@ -308,8 +330,24 @@ export default {
         initScrollbar("scrollbar-inner");
       }
     },
+    clcikTest(){
+    },
+    displayBar(){
+     
+      if( parseInt(window.innerWidth) < 1199){
+       this.$sidebar.displaySidebar(false);
+        this.$sidebar.toggleMinimize(false)
+
+      }else if(parseInt(window.innerWidth) > 1200){
+        this.$sidebar.displaySidebar(true);
+        this.$sidebar.toggleMinimize(true)
+
+      }
+    }
   },
   mounted() {
+      window.addEventListener('resize', this.displayBar);
+    
     this.initScrollbar(), this.$store.dispatch("profile/me");
   },
 };

@@ -133,9 +133,9 @@
 
             <line-test :data="chartData" :options="chartOptions"></line-test>
                <!--
-               <iframe width="460" height="355" src="https://mdbootstrap.com/api/snippets/embed/3601579/fullscreen" frameborder="0" style="padding-top: 55px;"></iframe> -->
+               <video-player width="460" height="355" src="https://mdbootstrap.com/api/snippets/embed/3601579/fullscreen" frameborder="0" style="padding-top: 55px;"></video-player> -->
                <!--
-                <iframe width="460" height="355" src="https://mdbootstrap.com/api/snippets/embed/3583948/fullscreen" frameborder="0" style="padding-top: 55px;"></iframe> -->
+                <video-player width="460" height="355" src="https://mdbootstrap.com/api/snippets/embed/3583948/fullscreen" frameborder="0" style="padding-top: 55px;"></video-player> -->
           </card>
         </div>
 
@@ -194,7 +194,7 @@
         <div class="col-md-12">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-270 position-relative">
         <div class="col-auto d-none d-lg-block">
-          <iframe width="1590" height="530" src="https://www.youtube.com/embed/JKWdarVK2Rc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <video-player width="1590" height="530" src="https://www.youtube.com/embed/JKWdarVK2Rc" title="YouTube video player" ></video-player>
           
           <nuxt-link :to="{name: 'itpraksa-video-video',params:{video:'Esenca Software 1'}}"><strong style="margin-left: 10px;">Esenca Software 1</strong></nuxt-link>
           <div class="mb-1 text-muted mx-2">15.12.2021.</div>
@@ -205,7 +205,7 @@
             <div class="col-sm-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 mr-1 shadow-sm h-md-270 position-relative">
             <div class="col-auto d-none d-lg-block">
-              <iframe width="760" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <video-player width="760" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" ></video-player>
               <nuxt-link :to="{name: 'itpraksa-video-video',params:{video:'Esenca Software 2'}}"><strong style="margin-left: 10px;">Esenca Software 2</strong></nuxt-link>
               <div class="mb-1 text-muted mx-2">15.12.2021.</div>
             </div>
@@ -215,147 +215,28 @@
         <div class="col-sm-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4  shadow-sm h-md-270 position-relative">
             <div class="col-auto d-none d-lg-block">
-              <iframe  width="780" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <video-player  width="780" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" ></video-player>
               <strong style="margin-left: 10px;">Esenca Software 3</strong>
               <div class="mb-1 text-muted mx-2">15.12.2021.</div>
             </div>
           </div>
         </div>
-      <div class="col-sm-4 ">
-        <div class="card ">
-          <iframe class="embed-responsive-item" height="230" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 4</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
+   
+  </div>
+  <div class="row" >
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" v-for="video in videos" :key="video">
+      
       <div class="card ">
-          <iframe class="embed-responsive-item" height="230" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 5</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="230" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 6</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>  
-    <div class="col-sm-3">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/G3gC-oOoju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 7</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 8</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-     <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/G3gC-oOoju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 9</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-     <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 10</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-       <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/G3gC-oOoju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 11</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 12</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/G3gC-oOoju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 13</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-       <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 14</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-       <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/G3gC-oOoju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 14</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 15</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-       <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/G3gC-oOoju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 16</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card ">
-          <iframe class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <video-player class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" ></video-player>
           <div class="card-body p-2 ">
             <h3 class="card-title m-0">Esenca Software 17</h3>
             <p class="card-text text-muted">03.02.2022.</p> 
           </div>
-        </div>
+        
     </div>            
+    </div>
+   
+    
   </div>
       <!--End tables-->
 </div>
@@ -368,7 +249,7 @@
 import * as chartConfigs from "@/components/argon-core/Charts/config";
 import LineChart from "@/components/argon-core/Charts/LineChart";
 import BarChart from "@/components/argon-core/Charts/BarChart";
-
+import VideoPlayer from 'nuxt-video-player'
 import RouteBreadCrumb from "@/components/argon-core/Breadcrumb/RouteBreadcrumb";
 import StatsCard from "@/components/argon-core/Cards/StatsCard";
 import SocialTrafficTable from "@/components/pages/dashboard/SocialTrafficTable.vue";
@@ -389,10 +270,12 @@ export default {
     StatsCard,
     PageVisitsTable,
     SocialTrafficTable,
-    LineTest
+    LineTest,
+    VideoPlayer
   },
   data() {
     return {
+      videos : 12,
       bigLineChart: {
         allData: [
           [0, 20, 10, 30, 15, 40, 20, 60, 60],

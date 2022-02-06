@@ -26,7 +26,7 @@ module.exports = {
     isDemo: process.env.IS_DEMO,
     apiKey: process.env.API_KEY,
   },
-  mode: "spa",
+  mode: "univerzal",
   router: {
     base: "/",
     linkExactActiveClass: "active"
@@ -171,9 +171,10 @@ module.exports = {
    */
   plugins: [
     "~/plugins/dashboard/dashboard-plugin",
-    { src: "~/plugins/dashboard/world-map", ssr: false },
-    "~/plugins/dashboard/JsonApi.js",
-    "~/plugins/isDemo.js",
+    // { src: "~/plugins/dashboard/world-map", ssr: false },
+ 
+    // "~/plugins/dashboard/JsonApi.js",
+    // "~/plugins/isDemo.js",
   ],
 
   /*
@@ -184,8 +185,22 @@ module.exports = {
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
     "@nuxtjs/auth",
-    "@nuxtjs/toast"
+    "@nuxtjs/toast",
+    'nuxt-mq'
   ],
+  'mq': {
+    defaultBreakpoint: 'xl',
+    breakpoints: {
+      iphone_5: 325,
+      sm: 450,
+      md: 768,
+      lg: 992,
+      xl: 1300,
+      xxl: 1400,
+      displayBar : 1199
+      
+    },
+  },
   /*
    ** Auth module configuration
    ** See https://auth.nuxtjs.org/schemes/local.html#options
