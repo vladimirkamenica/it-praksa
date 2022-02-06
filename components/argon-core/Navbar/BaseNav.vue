@@ -1,5 +1,5 @@
 <template>
-  <nav :class="classes" class="navbar">
+  <nav :class="classes" ref="navBar" class="navbar">
     <div :class="containerClasses">
       <slot name="brand"></slot>
 
@@ -113,8 +113,22 @@ export default {
     },
     closeMenu() {
       this.$emit('change', false);
-    }
+    },
+    changeBgTopBar(){
+     if(window.innerWidth > 1200){
+         this.$refs['navBar'].style.background="";
+      }else if(window.innerWidth < 1200){
+         this.$refs['navBar'].style.background="white";
+
+      }
   }
+  },
+   mounted() {
+      window.addEventListener('resize', this.changeBgTopBar);
+    
+  
+  },
+
 };
 </script>
 <style></style>

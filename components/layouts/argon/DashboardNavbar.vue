@@ -29,16 +29,7 @@
         </div>
       </li>
       
-      <base-dropdown
-        class="nav-item"
-        tag="li"
-        title-classes="nav-link"
-        title-tag="a"
-        icon="ni ni-bell-55"
-        menu-classes="dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden"
-      >
-       
-      </base-dropdown>
+     
     </ul>
   
   </base-nav>

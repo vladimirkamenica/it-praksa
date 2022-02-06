@@ -7,11 +7,7 @@
         </div>
         
       </div>
-<div class="row">
-  <div class="col">
-      <h1>Proba</h1>
-</div>
-</div>
+
       <!-- Card stats -->
       <div class="row">
         <div class="col-xl-3 col-md-6">
@@ -196,34 +192,28 @@
       <!--Tables-->
   <div class="row">
         <div class="col-md-12">
-          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-270 position-relative">
-        <div class="col-auto d-none d-lg-block">
-          <video-player width="1590" height="530" src="https://www.youtube.com/embed/JKWdarVK2Rc" title="YouTube video player" ></video-player>
+        
+          <video-player src="https://www.youtube.com/embed/JKWdarVK2Rc" title="YouTube video player" ></video-player>
           
           <nuxt-link :to="{name: 'itpraksa-video-video',params:{video:'Esenca Software 1'}}"><strong style="margin-left: 10px;">Esenca Software 1</strong></nuxt-link>
           <div class="mb-1 text-muted mx-2">15.12.2021.</div>
-        </div>
-      </div>
+    
+   
         </div>
 
             <div class="col-sm-6">
-          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 mr-1 shadow-sm h-md-270 position-relative">
-            <div class="col-auto d-none d-lg-block">
+          
               <video-player width="760" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" ></video-player>
               <nuxt-link :to="{name: 'itpraksa-video-video',params:{video:'Esenca Software 2'}}"><strong style="margin-left: 10px;">Esenca Software 2</strong></nuxt-link>
               <div class="mb-1 text-muted mx-2">15.12.2021.</div>
-            </div>
-          
-          </div>
+            
         </div>
         <div class="col-sm-6">
-          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4  shadow-sm h-md-270 position-relative">
-            <div class="col-auto d-none d-lg-block">
+          
               <video-player  width="780" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" ></video-player>
               <strong style="margin-left: 10px;">Esenca Software 3</strong>
               <div class="mb-1 text-muted mx-2">15.12.2021.</div>
-            </div>
-          </div>
+           
         </div>
    
   </div>

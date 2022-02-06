@@ -2,7 +2,7 @@
   <div class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
        :data="backgroundColor">
     <div class="scrollbar-inner" ref="sidebarScrollArea">
-      <div class="sidenav-header d-flex justify-content-center">
+      <div class="sidenav-header mb-4">
         <a class="navbar-brand" href="#">
           <img :src="logo" class="navbar-brand-img" alt="Sidebar logo">
         </a>
@@ -46,7 +46,7 @@ export default {
     },
     logo: {
       type: String,
-      default: "/img/brand/slogan 1.png",
+      default: "/img/brand/slogan 1.webp",
       description: "Sidebar app logo",
     },
     backgroundColor: {
