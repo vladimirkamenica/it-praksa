@@ -1,232 +1,46 @@
 <template>
   <div class="wrapper">
     <notifications></notifications>
-    <side-bar>
+    <side-bar ref="sideBar" :class="display" logo="/img/brand/slogan 1.webp">
       <template slot-scope="props" slot="links">
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Početna',
-            icon: 'ni ni-shop text-primary',
-            path: '/dashboard',
-          }"
-        >
-        </sidebar-item>
-          <!--
-        <sidebar-item
-          opened
-          :link="{
-            name: 'Examples (API)',
-            icon: 'fab fa-vuejs',
-          }"
-        >
-          <sidebar-item
-            opened
-            :link="{ name: 'User Profile', path: '/examples/user-profile' }"
-          />
-          <sidebar-item
-            opened
-            :link="{
-              name: 'User Management',
-              path: '/examples/user-management',
-            }"
-          /> 
-        </sidebar-item> -->
-        <sidebar-item
-        opened
-          :link="{
-            name: 'IT saveti',
-            path: '/it-saveti/_itsaveti.vue',
-            icon: 'far fa-comment',
-          }"
-        />
-        <sidebar-item
-        opened
-          :link="{
-            name: 'IT vesti',
-            path: '/it-vesti/itvesti',
-            icon: 'far fa-newspaper',
-          }"
-        />
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Testiranje',
-            icon: 'fas fa-check',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'PHP programiranje',
-            icon: 'fab fa-php',
-            path: '/maps/google',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Web design',
-            icon: 'far fa-object-group',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'HTML',
-            icon: 'fab fa-html5',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'CSS',
-            icon: 'fab fa-css3',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Osnove programiranja',
-            icon: 'fa fa-laptop-code',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: '.NET programiranje',
-            icon: 'fa fa-server',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'JAVA programiranje',
-            icon: 'fab fa-java',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Grafički dizajn',
-            icon: 'fa fa-palette',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Laravel',
-            icon: 'fab fa-laravel',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Node.js',
-            icon: 'fab fa-node',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Vue.js',
-            icon: 'fab fa-vuejs',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Bootstrap',
-            icon: 'ni ni-align-left-2 text-default',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'SEO',
-            icon: 'fab fa-searchengin',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Digitalni marketing',
-            icon: 'fab fa-digital-ocean',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'O nama',
-            icon: 'far fa-address-card',
-            path: '/tables/regular',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Marketing',
-            icon: 'fa fa-bullhorn',
-            path: '/kontakt/marketing',
-          }"
-        >
-        </sidebar-item>
-
-        <sidebar-item
-        opened
-          :link="{
-            name: 'Kontakt',
-            icon: 'fa fa-headset',
-            path: '/kontakt/kontakt',
-          }"
-        >
-        </sidebar-item>
+        <b-container >
+          <b-row>
+            <b-col @click="siderbarDisable">
+               <i class="ni ni-shop  mr-2 widthSidebar"></i>
+               <nuxt-link class="text-dark" :to="{name:'dashboard'}">Početna</nuxt-link>
+            </b-col>
+          </b-row>
+          <b-row class="mt-2">
+            <b-col @click="siderbarDisable">
+               <i class="far fa-newspaper  mr-2 widthSidebar"></i>
+               <nuxt-link  class="text-dark"  :to="{name:'it-vesti'}">It vesti</nuxt-link>
+            </b-col>
+          </b-row>
+          <b-row class="mt-2" v-for="video in categories" :key="video.id">
+            <b-col @click="siderbarDisable"> 
+               <i :class="`${video.icon}  mr-2 widthSidebar`"></i>
+               <nuxt-link class="text-dark"  :to="{name:'categoryvideo',params:{categoryvideo:srtToLatPath(video.video_category)}}">{{video.video_category}}</nuxt-link>
+            </b-col>
+          </b-row>
+           <b-row class="mt-2">
+            <b-col @click="siderbarDisable">
+               <i class="far fa-address-card mr-2 widthSidebar"></i>
+               <nuxt-link class="text-dark"  :to="{name:'o-nama'}">O nama</nuxt-link>
+            </b-col>
+          </b-row>
+          <b-row class="mt-2">
+            <b-col @click="siderbarDisable">
+               <i class="fa fa-bullhorn mr-2 widthSidebar"></i>
+               <nuxt-link class="text-dark"  :to="{name:'marketing'}">Marketing</nuxt-link>
+            </b-col>
+          </b-row>
+          <b-row class="mt-2">
+            <b-col @click="siderbarDisable">
+               <i class="fa fa-headset mr-2 widthSidebar"></i>
+               <nuxt-link class="text-dark"  :to="{name:'kontakt'}">Kontakt</nuxt-link>
+            </b-col>
+          </b-row>
+        </b-container>
 
         <hr
           class="my-3"
@@ -239,44 +53,6 @@
             height: 0;
           "
         />
-        <!--
-        <a
-          href="https://www.creative-tim.com/product/nuxt-argon-dashboard-pro-laravel"
-          target="_blank"
-          class="btn btn-danger btn-icon ml-sm-3 d-md-block mb-2 mt-1 mr-3"
-          ><span class="btn-inner--icon"
-            ><i class="fas fa-download mr-2"></i
-          ></span>
-          <span class="nav-link-inner--text">Upgrade to PRO</span></a
-        >
-
-        <a
-          href="https://nuxt-argon-dashboard-laravel.creative-tim.com/documentation/"
-          target="_blank"
-          class="btn btn-neutral btn-icon ml-sm-3 d-md-block mb-2 mr-3"
-          ><span class="btn-inner--icon"
-            ><i class="fas fa-file-alt mr-2"></i
-          ></span>
-          <span class="nav-link-inner--text">Documentation</span></a
-        >
-
-        <a
-          href="https://www.creative-tim.com/product/nuxt-argon-dashboard-laravel"
-          target="_blank"
-          class="btn btn-info btn-icon ml-sm-3 d-md-block mb-2 mr-3"
-          ><span class="btn-inner--icon"><i class="fas fa-gift mr-2"></i></span>
-          <span class="nav-link-inner--text">Download now</span></a
-        >
-
-        <a
-          href="https://github.com/creativetimofficial/nuxt-argon-dashboard-laravel"
-          target="_blank"
-          class="btn btn-dark btn-icon ml-sm-3 d-md-block mr-3"
-          ><span class="btn-inner--icon"
-            ><i class="fab fa-github mr-2"></i
-          ></span>
-          <span class="nav-link-inner--text">Star us on Github</span></a
-        > -->
       </template>
     </side-bar>
     <div class="main-content">
@@ -296,6 +72,7 @@
 /* eslint-disable no-new */
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
+import srToLat from '~/util/srToLat';
 
 function hasElement(className) {
   return document.getElementsByClassName(className).length > 0;
@@ -318,37 +95,74 @@ import DashboardContent from "~/components/layouts/argon/Content.vue";
 import Vuex from "vuex";
 
 export default {
+  computed:{
+    categories(){
+      return this.$store.state.category.categories
+    },
+    show(){
+      return this.$store.state.showlink.show;
+    },
+    display(){
+      return this.$store.state.showlink.display;
+    }
+  },
   components: {
     DashboardNavbar,
     ContentFooter,
     DashboardContent,
   },
+ 
   methods: {
+    srtToLatPath(title){
+     return srToLat(title).split(' ').join('-').toLowerCase().replace(/[?]/g,'');
+    },
     initScrollbar() {
       let isWindows = navigator.platform.startsWith("Win");
       if (isWindows) {
         initScrollbar("scrollbar-inner");
       }
     },
-    clcikTest(){
+    siderbarDisable(){      
+       if(this.$sidebar.showSidebar){
+           this.$sidebar.displaySidebar(false);
+           this.$sidebar.toggleMinimize(false);
+           this.$store.commit("showlink/set_show", false);
+           this.$store.commit("showlink/set_display",  'd-none' );
+
+
+
+        }     
     },
+  
     displayBar(){
      
-      if( parseInt(window.innerWidth) < 1199){
-       this.$sidebar.displaySidebar(false);
+      if( parseInt(window.innerWidth) < 1200){
+        this.$sidebar.displaySidebar(false);
         this.$sidebar.toggleMinimize(false)
+        this.$store.commit("showlink/set_show", false);
+        this.$store.commit("showlink/set_display",  'd-none' );
+
 
       }else if(parseInt(window.innerWidth) > 1200){
         this.$sidebar.displaySidebar(true);
         this.$sidebar.toggleMinimize(true)
+        this.$store.commit("showlink/set_show", true);
+        this.$store.commit("showlink/set_display",  'd-block' );
+
+
+
 
       }
     }
   },
+  created(){
+    
+  },
   mounted() {
       window.addEventListener('resize', this.displayBar);
-    
-    this.initScrollbar(), this.$store.dispatch("profile/me");
+      
+     
+      this.initScrollbar();
   },
 };
 </script>

@@ -1,146 +1,36 @@
 <template>
   <div>
-    <base-header class="pb-6">
-      <div class="row align-items-center py-4">
-        <div class="col-lg-6 col-7">
-          <h6 class="h2 d-inline-block mb-0" style="color:#111f46; font-family: Roboto;">IT PRAKSA</h6>
+    <base-header >
+      <div class="row">
+        <div class="col">
+          <h1>IT PRAKSA, SAVETI I PREPORUKE</h1>
         </div>
         
       </div>
 
       <!-- Card stats -->
-      <div class="row">
-        <div class="col-xl-3 col-md-6">
-          <stats-card class="ima">
-            <img src="../static/img/brand/PredragMasic.jpg" class="card-img-top">
-            <template slot="footer">
-               <h3 class="card-title">IT vest 1</h3>
-                <div class="mb-1 text-muted">27.12.2021.</div>
-          <p class="card-text"><strong>Predrag Mašić</strong>-lider, programer, predavač, vlasnik Esenca Software i IT kursevi.
-            4.7 je prosečna ocena
-          </p>
-          <a href="https://www.itkursevi.com/predrag-masic-lider-programer-predavac-vlasnik-esenca-software-i-it-kursevi">
-            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Detaljnije</button>
-          </a>
-            </template>
-          </stats-card>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <stats-card>
-            <img src="../static/img/brand/nemanjaAndjelovic.jpg" class="card-img-top" alt="">
-            <template slot="footer">
-              <h3 class="card-title">IT vest</h3>
-              <div class="mb-1 text-muted">27.12.2021.</div>
-          <p class="card-text">
-            Zadovoljni polaznici su naša najveća referenca.
-            76% polaznika nakon završenih naših programa se zaposli.
-          </p>
-          <a href="https://www.itkursevi.com/nevena-grujic-phpjava-programer">
-            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Detaljnije</button>
-          </a>
-            </template>
-          </stats-card>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <stats-card>
-            <img src="../static/img/brand/nevenaGrujic.jpg" class="card-img-top">
-            <template slot="footer">
-               <h3 class="card-title">IT vest</h3>
-          <div class="mb-1 text-muted">27.12.2021.</div>
-          <p class="card-text">
-            Zadovoljni polaznici su naša najveća referenca.
-            76% polaznika nakon završenih naših programa se zaposli.
-          </p>
-          <a href="https://www.itkursevi.com/nevena-grujic-phpjava-programer">
-            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Detaljnije</button>
-          </a>
-            </template>
-          </stats-card>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <stats-card>
-            <img src="../static/img/brand/dejanJovanovkski.png" class="card-img-top">
-            <template slot="footer">
-              <h3 class="card-title">IT vest</h3>
-          <div class="mb-1 text-muted">28.12.2021.</div>
-          <p class="card-text">
-            Zadovoljni polaznici su naša najveća referenca.
-            76% polaznika nakon završenih naših programa se zaposli.
-          </p>
-          <a href="https://www.itkursevi.com/dejan-jovanovski-net-programer">
-            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Detaljnije</button>
-          </a>
-            </template>
-          </stats-card>
-        </div>
-      </div>
+     <newspapers :newspapers="newspapers" :single="false"></newspapers>
     </base-header>
 
     <!--Charts-->
-    <div class="container-fluid mt--6">
+    <advertisements v-if="advertisements_big" :big="true" :big_obj="advertisements_big" ></advertisements>
+    <div class="container-fluid mt-6">
       <div class="row">
-        <div class="col-xl-4" >
-          <card type="default" style="background-color: #111f46; height: 500px;">
-            <div slot="header" class="row align-items-center" >
-              <div class="col" >
-                <h5 class="h3 mb-0" style="color: #111f46"> Trend programskog jezika</h5>
-              </div>
-              <div class="col">
-                <ul class="nav nav-pills justify-content-end">
-                  <li class="nav-item mr-2 mr-md-0">
-                    <a
-                      class="nav-link py-2 px-3"
-                      href="#"
-                      :class="{ active: bigLineChart.activeIndex === 0 }"
-                      @click.prevent="initBigChart(0)"
-                    >
-                      <span class="d-none d-md-block">Mesec</span>
-                      <span class="d-md-none">M</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link py-2 px-3"
-                      href="#"
-                      :class="{ active: bigLineChart.activeIndex === 1 }"
-                      @click.prevent="initBigChart(1)"
-                    >
-                      <span class="d-none d-md-block">Nedelja</span>
-                      <span class="d-md-none">W</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <line-chart
-              :height="350"
-              ref="bigChart"
-              :chart-data="bigLineChart.chartData"
-              :extra-options="bigLineChart.extraOptions"
-            >
-            </line-chart>
-          </card>
-        </div>
+      
 
         <div class="col-xl-4" >
-          <card class="bg-white" type="default"  style="height:500px;">
+          <card class="bg-white" type="default"  >
             <div slot="header" class="row align-items-center" >
               <div class="col" >
                 <h5 class="h3 mb-0" style="color: #111f46">Zastupljenost programskih jezika za 2021. godinu</h5>
               </div>
-              
             </div>
-
             <line-test :data="chartData" :options="chartOptions"></line-test>
-               <!--
-               <video-player width="460" height="355" src="https://mdbootstrap.com/api/snippets/embed/3601579/fullscreen" frameborder="0" style="padding-top: 55px;"></video-player> -->
-               <!--
-                <video-player width="460" height="355" src="https://mdbootstrap.com/api/snippets/embed/3583948/fullscreen" frameborder="0" style="padding-top: 55px;"></video-player> -->
           </card>
         </div>
-
+        
         <div class="col-xl-4">
-          <card header-classes="bg-transparent" style="height:500px;">
+          <card header-classes="bg-transparent" >
             <div slot="header" class="row align-items-center">
               <div class="col">
                 <h6 class="text-uppercase text-muted ls-1 mb-1">Anketa</h6>
@@ -186,52 +76,27 @@
            
           </card>
         </div>
+           <div class="col-xl-4" >
+          <card class="bg-white" type="default"  >
+            <div slot="header" class="row align-items-center" >
+              <div class="col" >
+                <h5 class="h3 mb-0" style="color: #111f46">Zastupljenost programskih jezika za 2021. godinu</h5>
+              </div>
+            </div>
+            <line-test :data="chartData" :options="chartOptions"></line-test>
+          </card>
+        </div>
       </div>
       <!-- End charts-->
 
       <!--Tables-->
-  <div class="row">
-        <div class="col-md-12">
-        
-          <video-player src="https://www.youtube.com/embed/JKWdarVK2Rc" title="YouTube video player" ></video-player>
-          
-          <nuxt-link :to="{name: 'itpraksa-video-video',params:{video:'Esenca Software 1'}}"><strong style="margin-left: 10px;">Esenca Software 1</strong></nuxt-link>
-          <div class="mb-1 text-muted mx-2">15.12.2021.</div>
+     <video-display :big="true" :videos="top_videos"></video-display>
+     <video-display :xl_col="3" :big="false" :videos="videos"></video-display>
     
-   
-        </div>
 
-            <div class="col-sm-6">
-          
-              <video-player width="760" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" ></video-player>
-              <nuxt-link :to="{name: 'itpraksa-video-video',params:{video:'Esenca Software 2'}}"><strong style="margin-left: 10px;">Esenca Software 2</strong></nuxt-link>
-              <div class="mb-1 text-muted mx-2">15.12.2021.</div>
-            
-        </div>
-        <div class="col-sm-6">
-          
-              <video-player  width="780" height="300" src="https://www.youtube.com/embed/G3gC-oOoju0" title="YouTube video player" ></video-player>
-              <strong style="margin-left: 10px;">Esenca Software 3</strong>
-              <div class="mb-1 text-muted mx-2">15.12.2021.</div>
-           
-        </div>
-   
-  </div>
-  <div class="row" >
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" v-for="video in videos" :key="video">
-      
-      <div class="card ">
-          <video-player class="embed-responsive-item" height="210" src="https://www.youtube.com/embed/JKWdarVK2Rc" ></video-player>
-          <div class="card-body p-2 ">
-            <h3 class="card-title m-0">Esenca Software 17</h3>
-            <p class="card-text text-muted">03.02.2022.</p> 
-          </div>
-        
-    </div>            
-    </div>
-   
-    
-  </div>
+ 
+    <advertisements :big="false" :advertisements="advertisements_display" ></advertisements>
+
       <!--End tables-->
 </div>
   </div>
@@ -240,15 +105,21 @@
 <script>
 
 // Charts
+import VideoDisplay from '~/components/videos-display/videos-display';
+
 import * as chartConfigs from "@/components/argon-core/Charts/config";
 import LineChart from "@/components/argon-core/Charts/LineChart";
 import BarChart from "@/components/argon-core/Charts/BarChart";
 import VideoPlayer from 'nuxt-video-player'
 import RouteBreadCrumb from "@/components/argon-core/Breadcrumb/RouteBreadcrumb";
 import StatsCard from "@/components/argon-core/Cards/StatsCard";
-import SocialTrafficTable from "@/components/pages/dashboard/SocialTrafficTable.vue";
-import PageVisitsTable from "@/components/pages/dashboard/PageVisitsTable.vue";
+
+
 import LineTest from "@/components/charts/LineChart";
+import Newspapers from "~/components/newspapers/newspapers"
+import Advertisements from "~/components/advertisements/advertisements"
+import adsFilterBigImg from '~/util/adsFilterBigImg'
+
 export default {
   middleware({ store, redirect }) {
     // If the user is not authenticated
@@ -256,20 +127,38 @@ export default {
       return redirect("/login");
     }*/
   },
+  
   layout: "DashboardLayout",
   components: {
     LineChart,
     BarChart,
     RouteBreadCrumb,
     StatsCard,
-    PageVisitsTable,
-    SocialTrafficTable,
     LineTest,
-    VideoPlayer
+    VideoPlayer,
+    Newspapers,
+    Advertisements,
+    VideoDisplay
+  },
+  async asyncData({app}){
+   let newspapers = await app.$axios.$get(`${app.$axios.defaults.baseURL}/api/newspaper-index`);
+   let video = await app.$axios.$get(`${app.$axios.defaults.baseURL}/api/video-index`);   
+   let advertisement = await app.$axios.$get(`${app.$axios.defaults.baseURL}/api/ads-to-page?route=/&category=''`)
+   
+    return {
+      newspapers : newspapers.newspapers,
+      videos : video.videos,
+      top_videos : video.top_videos,
+      advertisements_display : adsFilterBigImg.bigImgFalse(advertisement.advertisements),
+      advertisements_big: adsFilterBigImg.bigImgTrue(advertisement.advertisements),
+    }
+  },
+ 
+  mounted(){
   },
   data() {
     return {
-      videos : 12,
+     
       bigLineChart: {
         allData: [
           [0, 20, 10, 30, 15, 40, 20, 60, 60],

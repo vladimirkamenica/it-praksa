@@ -1,43 +1,56 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid minPageHeight">
      <div class="row">
          <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 ">
-            <div class="row mt-4 ml-5">
+            <div class="row mt-4">
                 <div class="col">
                     <h1>Marketing</h1>
                     <p>
-                    Portal Pijace.com svakodnevno posećuju poljoprivrednici, poljoprivredne kompanije, 
-                    obični korisnici koji kupuju i prodaju poljoprivredne proizvode.
-                    <br><br>
-                    ITpraksa.com svakodnevno ima sve više poseta, objavljenih statističkih podataka, informacija.
-                        <br><br>
-                    Postavite istaknuti oglas, banere u više dimenzija i na različitim mestima na portalu.
-
-           <br><br>Budite slobodni i kontaktirajte nas!!!
-
-          <br><br> 063 85 42 651
-
-          <br><br> info@ITpraksa.com
-
+                   Portal itpraksa.com svakodnevno posećuju mladi programeri u potrazi za prvim poslom, zatim kompanije koje traže mlade praktikante i juniore, ali i svi oni koji traže informacije i savete da li učiti programiranje i koji programski jezik.<br><br>
+                   Itpraksa.com svakodnevno ima sve više poseta, objavljenih statističkih podataka, videa, informacija, saveta, preporuka, it vesti, oglasa za praksu i posao.<br><br>
+                   Postavite istaknuti oglas, banere u više dimenzija i na različitim mestima na portalu.<br><br>
+                   Budite slobodni i kontaktirajte nas!!!<br><br>
+                   063 85 42 651<br><br>
+                   info@itpraksa.com<br><br>
           </p>
                 </div>
             </div>
- 
-  
-   
-         
+           <advertisements :big="false" :advertisements="advertisements_display" ></advertisements>        
          </div>
-         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 bg-danger">
-          Reklame
+         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 ">
+     
          </div>
      </div>
 </div>
 </template>
 
 <script>
+import Advertisements from "~/components/advertisements/advertisements";
+import adsFilterBigImg from '~/util/adsFilterBigImg';
 export default {
 layout: 'DashboardLayout',
 name: 'marketing',
+components:{
+  Advertisements
+},
+async asyncData({app,params,route}){
+ 
+    let advertisement = await app.$axios.$get(`/api/ads-to-page?route=${route.path}&category=''`);
+    return {
+    
+      advertisements_display : adsFilterBigImg.bigImgFalse(advertisement.advertisements),
+      
+    }
+},
+head(){
+     return{
+            htmlAttrs:{
+        lang: 'sr'
+        },
+         title: "Marketing",
+         
+       }
+  },
 }
 
 </script>

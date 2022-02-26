@@ -3,30 +3,15 @@
     <div :class="containerClasses">
       <slot name="brand"></slot>
 
-      <slot name="toggle-button">
-        <button
-          class="navbar-toggler collapsed"
-          v-if="hasMenu"
-          type="button"
-          @click="toggleMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-bar navbar-kebab"></span>
-          <span class="navbar-toggler-bar navbar-kebab"></span>
-          <span class="navbar-toggler-bar navbar-kebab"></span>
-        </button>
-      </slot>
+    
 
-      <button class="navbar-toggler" @click.stop="toggleMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
 
         <div
           class="navbar-collapse navbar-custom-collapse collapse show"
           :class="menuClasses"
           v-show="show"
-          v-click-outside="closeMenu">
+          @click="closeMenu">
           <slot :close-menu="closeMenu"></slot>
         </div>
     </div>
@@ -90,7 +75,7 @@ export default {
   },
   computed: {
     classes() {
-      let color = `bg-${this.type}`;
+      let color = ``;
       let classes = [
         { 'navbar-transparent': this.transparent },
         { [`navbar-expand-${this.expand}`]: this.expand }
@@ -109,14 +94,27 @@ export default {
   },
   methods: {
     toggleMenu() {
+      console.log('radi 1')
       this.$emit('change', !this.show);
+   
     },
     closeMenu() {
+      if(this.$store.state.showlink.display == 'd-xl-block d-lg-none d-md-none d-sm-none d-none'){
+         this.$store.commit("showlink/set_display",  'd-block' );
+         this.$store.commit("showlink/set_show", true);
+
+      }else{
+         this.$store.commit("showlink/set_show", !this.$store.state.showlink.show);
+         this.$store.commit("showlink/set_display", this.$store.state.showlink.show ? 'd-block' : 'd-none');
+      }
+      
       this.$emit('change', false);
+     
+
     },
     changeBgTopBar(){
      if(window.innerWidth > 1200){
-         this.$refs['navBar'].style.background="";
+         this.$refs['navBar'].style.background="transparent";
       }else if(window.innerWidth < 1200){
          this.$refs['navBar'].style.background="white";
 

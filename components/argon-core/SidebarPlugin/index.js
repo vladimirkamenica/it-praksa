@@ -14,38 +14,23 @@ const SidebarStore = {
     this.isMinimized = !value
     this.showSidebar = value;
     let docClasses = document.body.classList
-    if (value) {
-      docClasses.add('g-sidenav-pinned')
-      docClasses.add('g-sidenav-show')
-      docClasses.remove('g-sidenav-hidden')
-    } else {
-      docClasses.add('g-sidenav-hidden')
-      docClasses.remove('g-sidenav-pinned')
-      docClasses.remove('g-sidenav-show')
-    }
+
+    
   },
   toggleMinimize(value) {
     this.isMinimized = !this.isMinimized;
     let docClasses = document.body.classList
-    if (value) {
-      docClasses.add('g-sidenav-pinned')
-      docClasses.add('g-sidenav-show')
-      docClasses.remove('g-sidenav-hidden')
-    } else {
-      docClasses.add('g-sidenav-hidden')
-      docClasses.remove('g-sidenav-pinned')
-      docClasses.remove('g-sidenav-show')
-    }
+    
   },
   onMouseEnter() {
-    this.hovered = true
+  
     if (this.isMinimized) {
       document.body.classList.add('g-sidenav-show')
       document.body.classList.remove('g-sidenav-hidden')
     }
   },
   onMouseLeave() {
-    this.hovered = false
+    
     if (this.isMinimized) {
       let docClasses = document.body.classList
       docClasses.remove('g-sidenav-show')

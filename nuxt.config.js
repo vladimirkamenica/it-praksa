@@ -15,121 +15,32 @@
 
 */
 
-const pkg = require("./package");
+
 console.log("ENV", process.env.NODE_ENV);
-const { default: isDemo } = require("./plugins/isDemo");
+
 
 module.exports = {
-  env: {
-    apiUrl: process.env.API_BASE_URL,
-    baseUrl: process.env.BASE_URL,
-    isDemo: process.env.IS_DEMO,
-    apiKey: process.env.API_KEY,
-  },
-  mode: "univerzal",
-  router: {
-    base: "/",
-    linkExactActiveClass: "active"
-  },
-  meta: {
-    ogType: false,
-    ogDescription: false,
-    author: false,
-    ogTitle: false,
-    description: false,
-    viewport: false,
-    charset: false,
-   },
+  mode: "universal",
+ 
+
   /*
    ** Headers of the page
    */
+   router: {
+    base: "/dashboard",
+    linkExactActiveClass: "active"
+  },
   head: {
-    title: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION",
+    htmlAttrs: { lang: 'sr' },
+    title: "It praksa, saveti i preporuke.",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content:
-          "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-      },
-      {
-        name: "keywords",
-        content:
-          "creative tim, updivision, html dashboard, nuxt, laravel, vue, vuejs, json:api, json, api, html css dashboard laravel, nuxt argon dashboard laravel, nuxt argon dashboard, argon admin, nuxt dashboard, nuxt admin, web dashboard, bootstrap 4 dashboard laravel, bootstrap 4, css3 dashboard, bootstrap 4 admin laravel, argon dashboard bootstrap 4 laravel, frontend, responsive bootstrap 4 dashboard, argon dashboard, argon laravel bootstrap 4 dashboard"
-      },
-      {
-        itemprop: "name",
-        content: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION"
-      },
-      {
-        itemprop: "description",
-        content:
-          "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-      },
-      {
-        itemprop: "image",
-        content:
-          "https://s3.amazonaws.com/creativetim_bucket/products/350/original/opt_ad_nuxt_laravel_thumbnail.jpg"
-      },
-      {
-        name: "twitter:card",
-        content: "product"
-      },
-      {
-        name: "twitter:site",
-        content: "@creativetim"
-      },
-      {
-        name: "twitter:title",
-        content: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION"
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-      },
-      {
-        name: "twitter:creator",
-        content: "@creativetim"
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://s3.amazonaws.com/creativetim_bucket/products/350/original/opt_ad_nuxt_laravel_thumbnail.jpg"
-      },
-      {
-        property: "fb:app_id",
-        content: "655968634437471"
-      },
-      {
-        property: "og:title",
-        content: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION"
-      },
-      {
-        property: "og:type",
-        content: "article"
-      },
-      {
-        property: "og:url",
-        content:
-          "https://www.creative-tim.com/live/nuxt-argon-dashboard-laravel"
-      },
-      {
-        property: "og:image",
-        content:
-          "https://s3.amazonaws.com/creativetim_bucket/products/350/original/opt_ad_nuxt_laravel_thumbnail.jpg"
-      },
-      {
-        property: "og:description",
-        content:
-          "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-      },
-      {
-        property: "og:site_name",
-        content: "Creative Tim"
-      }
+      { hid: "description", name: "description", content: "IT praksa,praksa za programere, it praksa saveti i preporuke,oglasi za it praksu."},
+      { hid: 'author', name: 'author', content: 'Esenca software' }, 
+      { hid: 'og:image', property: "og:image", content: "/favicon.png"},
+      { hid: 'og:description', property: "og:description", content: "IT praksa,praksa za programere, it praksa saveti i preporuke,oglasi za it praksu."},
+      
     ],
     link: [
       { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -153,16 +64,21 @@ module.exports = {
    */
   loading: { color: "#fff" },
 
+
   /*
    ** Global CSS
    */
   css: [
     "assets/css/nucleo/css/nucleo.css",
+    
     "assets/sass/argon.scss",
-    "~assets/css/style.css",
-    "~assets/css/main.css"
+    "assets/css/style.css",
+    "assets/css/main.css",
+    "assets/css/checkbox.min.css",
+    'assets/css/quill-editor.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
-
+  telemetry: false,
   router: {
     /*middleware: ['auth']*/
   },
@@ -171,6 +87,9 @@ module.exports = {
    */
   plugins: [
     "~/plugins/dashboard/dashboard-plugin",
+    "~/plugins/dashboard/globalComponents",
+    "~/plugins/fontawesome.js",
+    { src: '~/plugins/datetime-picker.js', ssr: false }
     // { src: "~/plugins/dashboard/world-map", ssr: false },
  
     // "~/plugins/dashboard/JsonApi.js",
@@ -184,9 +103,11 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
-    "@nuxtjs/auth",
+    'cookie-universal-nuxt',
     "@nuxtjs/toast",
-    'nuxt-mq'
+    'nuxt-mq',
+    'bootstrap-vue/nuxt',  
+    'vue2-editor/nuxt'
   ],
   'mq': {
     defaultBreakpoint: 'xl',
@@ -196,46 +117,20 @@ module.exports = {
       md: 768,
       lg: 992,
       xl: 1300,
-      xxl: 1400,
-      displayBar : 1199
-      
-    },
+      xxl: 1400  
+    }
   },
-  /*
-   ** Auth module configuration
-   ** See https://auth.nuxtjs.org/schemes/local.html#options
-   */
-  auth: {
-    strategies: {
-      local: {
-        _scheme: "~/util/authCustomStrategy.js",
-        endpoints: {
-          login: {
-            url: "login",
-            method: "post",
-            propertyName: "access_token"
-          },
-          logout: { url: "/logout", method: "post" },
-          user: {
-            url: "/me",
-            method: "get",
-            propertyName: false
-          }
-        }
-      },
-      redirect: {
-        login: "/login",
-        logout: "/",
-        callback: "/login",
-        home: "/dashboard"
-      }
+  bootstrapVue: {
+    bootstrapCSS: true, // Or `css: false`
+    bootstrapVueCSS: true, // Or `bvCSS: false`
+    icons: false
+  },
+  pwa: {
+    manifest: {
+      lang: 'sr',
     }
   },
 
-  /*
-   ** Notification toast module configuration
-   ** See https://github.com/nuxt-community/modules/tree/master/packages/toast?ref=madewithvuejs.com
-   */
   toast: {
     position: "top-right",
     duration: 5000,
@@ -261,35 +156,49 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.API_BASE_URL,
-    headers: {
-      common: {
-        Accept: "application/vnd.api+json",
-        "content-type": "application/vnd.api+json"
-      },
-      post: {
-        "content-type": "application/vnd.api+json"
-      },
-      patch: {
-        "content-type": "application/vnd.api+json"
-      },
-      delete: {
-        "content-type": "application/vnd.api+json"
-      }
-    }
+   
+    baseURL: process.env.NODE_ENV == "production" ? 'https://itpraksa.com/api' : 'http://127.0.0.1:8000',
+    
   },
-
+  hooks: {  
+    'vue-renderer:ssr:context'(context) {
+      const routePath = JSON.stringify(context.nuxt.routePath);
+      const state = context.nuxt.state;
+      context.nuxt = {serverRendered: true, routePath, state};
+    },
+  },
   /*
    ** Build configuration
    */
+   buildModules: [
+    '@nuxtjs/moment',
+    
+  ],
+ 
+  moment: {
+    defaultLocale: 'sr',
+    locales: ['sr']
+  },
   build: {
-    transpile: ["vee-validate/dist/rules"],
+    // transpile: ["vee-validate/dist/rules"],
+    transpile: [/^element-ui/],
     /*
      ** You can extend webpack config here
      */
+     optimization: {
+      splitChunks: {
+        chunks: 'async',
+      }
+    },
+    splitChunks: {
+      pages: false,
+      vendor: false,
+      commons: false,
+      runtime: false,
+      layouts: false
+    },
     extend(config, ctx) {},
-    extractCSS: process.env.NODE_ENV === "production",
+    extractCSS: true ,
     babel: {
       plugins: [
         [

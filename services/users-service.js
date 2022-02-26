@@ -5,41 +5,41 @@ const url = process.env.apiUrl;
 const jsona = new Jsona();
 
 function list(params, axios) {
-  const options = {
-    params: params,
-    paramsSerializer: function (params) {
-      return qs.stringify(params, {encode: false});
-    }
-  };
+  // const options = {
+  //   params: params,
+  //   paramsSerializer: function (params) {
+  //     return qs.stringify(params, {encode: false});
+  //   }
+  // };
 
-  return axios.get(`${url}/users`, options)
-    .then(response => {
-      return {
-        list: jsona.deserialize(response.data),
-        meta: response.data.meta
-      };
-    });
+  // return axios.get(`${url}/users`, options)
+  //   .then(response => {
+  //     return {
+  //       list: jsona.deserialize(response.data),
+  //       meta: response.data.meta
+  //     };
+  //   });
 }
 
 function get(id, axios) {
-  return axios.get(`${url}/users/${id}`)
-    .then(response => {
-      let user = jsona.deserialize(response.data);
-      delete user.links;
-      return user;
-    });
+  // return axios.get(`${url}/users/${id}`)
+  //   .then(response => {
+  //     let user = jsona.deserialize(response.data);
+  //     delete user.links;
+  //     return user;
+  //   });
 }
 
 function add(user, axios) {
-  const payload = jsona.serialize({
-    stuff: user,
-    includeNames: null
-  });
+  // const payload = jsona.serialize({
+  //   stuff: user,
+  //   includeNames: null
+  // });
 
-  return axios.post(`${url}/users`, payload, options)
-    .then(response => {
-      return jsona.deserialize(response.data);
-    });
+  // return axios.post(`${url}/users`, payload, options)
+  //   .then(response => {
+  //     return jsona.deserialize(response.data);
+  //   });
 }
 
 function update(user, axios) {

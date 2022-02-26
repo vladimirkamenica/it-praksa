@@ -3,9 +3,11 @@
        :data="backgroundColor">
     <div class="scrollbar-inner" ref="sidebarScrollArea">
       <div class="sidenav-header mb-4">
-        <a class="navbar-brand" href="#">
-          <img :src="logo" class="navbar-brand-img" alt="Sidebar logo">
-        </a>
+     
+          <nuxt-link class="navbar-brand" :to="{name:'dashboard'}">
+                <img :src="logo"  alt="Sidebar logo">
+          </nuxt-link>        
+        
       </div>
       <slot></slot>
       <div class="navbar-inner">
@@ -34,6 +36,7 @@
 export default {
   name: "sidebar",
   props: {
+  
     title: {
       type: String,
       default: "Creative Tim",
@@ -44,14 +47,19 @@ export default {
       default: "CT",
       description: "Sidebar short title",
     },
+     logoWidth: {
+      type: Number,
+      default: 150,
+ 
+    },
     logo: {
       type: String,
       default: "/img/brand/slogan 1.webp",
-      description: "Sidebar app logo",
+      description: "It praksa",
     },
     backgroundColor: {
       type: String,
-      default: "vue",
+      default: "",
       validator: (value) => {
         let acceptedValues = [
           "",
