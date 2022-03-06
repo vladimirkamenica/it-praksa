@@ -91,9 +91,9 @@
                         </b-col>
     
                     </b-row>
-                        <b-row style="height: 700px">
+                        <b-row >
                             <b-col>
-                                <b-table responsive stacked="xl" striped hover :fields="fields" :items="listOfNewspapers">
+                                <b-table responsive stacked="xl" striped hover :fields="fields" :items="listOfNewspapers" style="height:710px">
                                      <template #cell(title_news)="row">
                                               <textarea name="title" id="title" class="form-control widthTextarea" style="min-height:100px" v-model="row.item.title_news"></textarea>
                                      </template>

@@ -1,4 +1,9 @@
 <template>
+<div>
+  <b-container fluid class="mt-0">
+     <social-sharing :url='getFullpath' :title='newspaper.title_news'></social-sharing>
+     <hr>
+ </b-container>
   <b-container fluid class="minPageHeight">
      <b-row>
        <b-col xl="9" lg="9" md="12" sm="12" cols="12">
@@ -11,7 +16,7 @@
              </b-col>
            </b-row>
              <b-row class="mt-4">
-               <b-col class="bg-white shadow ql-editor" v-html="newspaper.description">
+               <b-col class="bg-white shadow ql-editor text-dark" v-html="newspaper.description">
 
                </b-col>
              </b-row>
@@ -21,10 +26,14 @@
                </b-col>
              </b-row>
        </b-col>
-        <b-col xl="3" lg="3" md="12" sm="12" cols="12">
+        <b-col xl="3" lg="3" md="12" sm="12" cols="12" class="text-center">
+           <a href="https://esenca.rs" target="_blank">
+             <img class="img-fluid" :src="require('~/static/img/brand/esenca-web-ecommerce.webp')" alt="esenca">
+           </a>
        </b-col>
      </b-row>
   </b-container>
+  </div>
 </template>
 
 <script>
@@ -32,11 +41,19 @@
 import srToLat from '~/util/srToLat';
 import Advertisements from "~/components/advertisements/advertisements";
 import adsFilterBigImg from '~/util/adsFilterBigImg';
+import SocialSharing from '~/components/SocialSharing/SocialSharing';
+
 export default {
 layout: 'DashboardLayout',
 name: 'news',
 components:{
-  Advertisements
+  Advertisements,
+  SocialSharing
+},
+computed:{
+getFullpath(){
+        return  `https://itpraksa.com${this.$nuxt.$route.fullPath}`;
+    }
 },
 async asyncData({app,params,route}){
   let newspaper = await app.$axios.$get(`${app.$axios.defaults.baseURL}/api/newspaper-news-single?title=${encodeURIComponent(params.title.split('-').join(' '))}`);

@@ -1,7 +1,7 @@
 <template>
   <div>
       <b-container fluid>
-          <b-row v-if="big" class="mt-4">
+          <b-row v-if="big">
               <b-col  class="text-center">
                   <a :href="big_obj.advertisement.link_ads" target="_blank">
                   <img class="img-fluid" :src="big_obj.advertisement.img_ads" :alt="big_obj.advertisement.title_ads">

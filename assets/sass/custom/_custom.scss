@@ -156,10 +156,31 @@
 }
 .widthTextarea{
   min-width: 200px;
+  min-height: 85px;
 }
 .heightBodyVideo{
   min-height: 115px;
 }
 .dateVideoSize{
   font-size: 14px;
+}
+.modal-z{
+  z-index: 2099;
+}
+.load-more-w{
+  width:220px;
+}
+.fa-linkedin {
+  background: #0077B5;
+  color: white;
+  padding: 10px;
+  font-size: 25px;
+  width: 45px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+.footer-color-nuxt{
+  color: #8898aa !important;
+   font-size: 0.875rem;
 }

@@ -15,9 +15,6 @@ export default function(path){
             },{
                 sign : 'ć',
                 change : 'c'
-            },{
-                sing : '?',
-                change : 'c'
             }
 
         ]

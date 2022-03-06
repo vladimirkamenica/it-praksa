@@ -1,12 +1,11 @@
 <template>
-  <nav :class="classes" ref="navBar" class="navbar">
+  <nav :class="classes"  class="navbar shadow bg-white d-xl-none d-lg-block d-md-block d-sm-block d-block">
     <div :class="containerClasses">
-      <slot name="brand"></slot>
-
-    
-
-      
-
+      <slot name="brand" >
+        <nuxt-link :to="{name:'index'}">
+            <img class="d-xl-none d-lg-block d-md-block d-sm-block d-block" src="/img/brand/logoitpraksa.png" width="130" alt="itpraksa.com" >
+        </nuxt-link>
+      </slot>
         <div
           class="navbar-collapse navbar-custom-collapse collapse show"
           :class="menuClasses"
@@ -94,7 +93,6 @@ export default {
   },
   methods: {
     toggleMenu() {
-      console.log('radi 1')
       this.$emit('change', !this.show);
    
     },
@@ -122,7 +120,7 @@ export default {
   }
   },
    mounted() {
-      window.addEventListener('resize', this.changeBgTopBar);
+      
     
   
   },

@@ -83,7 +83,7 @@
                                </b-row>
                                <b-row>
                                    <b-col>
-                                        <b-modal ref="edit-modal" size="xl" hide-footer>
+                                        <b-modal data-backdrop="false" ref="edit-modal" size="xl" hide-footer>
                                             <b-container>
                              <b-row>
                                  <b-col>

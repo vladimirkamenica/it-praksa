@@ -327,7 +327,7 @@
 //
 
 .sidenav {
-    z-index: 1050;
+    z-index: 1039;
     @include transition($transition-base);
 
     @include media-breakpoint-up(md) {

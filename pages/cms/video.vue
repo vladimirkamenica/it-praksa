@@ -98,7 +98,7 @@
                    <b-tab title="Pregled videa">
                       <b-container fluid>
                           <b-row>
-                              <b-col cols="auto">
+                              <b-col cols="auto p-0">
                                   <b-select :options="listOfCategories"
                                              value-field="id"
                                              v-model="filter.category"
@@ -121,7 +121,7 @@
                               </b-col>
                           </b-row>
                            <b-row>
-                               <b-col class="mt-4">
+                               <b-col class="mt-4 p-0">
                                    <b-table responsive stacked="xl" striped hover :items="listOfVideos" :fields="fieldsVideo" style="height:650px">
                                        <template #cell(display)="row">
                                         <div>             
@@ -133,6 +133,9 @@
                                        </template>
                                        <template #cell(link)="row">
                                               <textarea name="link" id="link" class="form-control widthTextarea" v-model="row.item.link"></textarea>
+                                       </template>
+                                       <template #cell(title_video)="row">
+                                              <textarea name="title_video" id="title_video" class="form-control widthTextarea" v-model="row.item.title_video"></textarea>
                                        </template>
                                         <template #cell(date_video)="row">
                                             <client-only>

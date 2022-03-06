@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <notifications></notifications>
-    <side-bar :class="display" logo="/img/brand/slogan 1.webp">
+    <side-bar :class="display" logo="/img/brand/logoitpraksa.png">
       <template slot-scope="props" slot="links">
         <b-container>
           <b-row class="mt-2"   v-if="role.all_permits">
@@ -73,7 +73,7 @@
         :type="$route.name === 'alternative' ? 'light' : 'default'"
       ></dashboard-navbar>
 
-      <div @click="$sidebar.displaySidebar(false)">
+      <div @click="siderbarDisable">
         
         <nuxt></nuxt>
       </div>

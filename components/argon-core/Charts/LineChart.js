@@ -13,7 +13,10 @@ export default {
   },
   data() {
     return {
-      ctx: null
+      ctx: null,
+      options :{ responsive: true, maintainAspectRatio: false, scales: {
+    } ,
+    }
     };
   },
   mounted() {
@@ -21,7 +24,7 @@ export default {
       'chartData',
       (newVal, oldVal) => {
         if (!oldVal) {
-          this.renderChart(this.chartData, this.extraOptions);
+          this.renderChart(this.chartData, this.options);
         }
       },
       { immediate: true }

@@ -4,12 +4,12 @@
     <b-col  xl="6" lg="6" md="6" sm="12" cols="12" v-for="video in videos" :key="video.id">       
                  <div class="card ">
                   <video-player class="embed-responsive-item"  :src="video.link" ></video-player>
+                    <nuxt-link :to="{name:'categoryvideo-title',params:{categoryvideo:srtToLatPath(video.category.video_category),title:srtToLatPath(video.title_video)}}">
                     <div class="card-body p-2 heightBodyVideo" >
-                        <nuxt-link :to="{name:'categoryvideo-title',params:{categoryvideo:srtToLatPath(video.category.video_category),title:srtToLatPath(video.title_video)}}">
-                         <h3 class="card-title m-0">{{video.title_video}}</h3>
-                      </nuxt-link>
-                  <p class="card-text text-muted dateVideoSize">{{dateNews(video.video_date)}}</p> 
+                         <h3 class="card-title m-0 text-dark">{{video.title_video}}</h3>            
+                  <p class="card-text text-muted dateVideoSize">{{dateVideo(video.date_video)}}</p> 
                </div>
+                  </nuxt-link>
        </div>
     </b-col>
     </b-row>
@@ -17,12 +17,12 @@
  <b-col :xl="xl_col" lg="4" md="4" sm="6" cols="12" v-for="video in videos" :key="video.id">
            <div class="card ">
           <video-player class="embed-responsive-item"  :src="video.link" ></video-player>
+             <nuxt-link :to="{name:'categoryvideo-title',params:{categoryvideo:srtToLatPath(video.category.video_category),title:srtToLatPath(video.title_video)}}">
           <div class="card-body p-2 heightBodyVideo" >
-            <nuxt-link :to="{name:'categoryvideo-title',params:{categoryvideo:srtToLatPath(video.category.video_category),title:srtToLatPath(video.title_video)}}">
-               <h4 class="card-title m-0">{{video.title_video}}</h4>
-            </nuxt-link>
-            <p class="card-text text-muted dateVideoSize">{{dateNews(video.video_date)}}</p> 
+               <h4 class="card-title m-0 text-dark">{{video.title_video}}</h4>
+            <p class="card-text text-muted dateVideoSize">{{dateVideo(video.date_video)}}</p> 
           </div>
+            </nuxt-link>
        </div>            
       </b-col>
     </b-row>
@@ -51,11 +51,11 @@ props:{
 
 },
 methods:{
-  dateNews(date){
+  dateVideo(date){
        return this.$moment(date).format("DD.MM.YYYY")
     },
   srtToLatPath(title){
-     return srToLat(title).split(' ').join('-').toLowerCase().replace(/[?]/g,'');
+     return srToLat(title.toLowerCase()).split(' ').join('-').toLowerCase().replace(/[?,]/g,'');
     },
      lengthTitle(title){
         let res = '';

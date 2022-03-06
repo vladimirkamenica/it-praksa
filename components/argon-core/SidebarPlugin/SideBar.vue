@@ -4,8 +4,8 @@
     <div class="scrollbar-inner" ref="sidebarScrollArea">
       <div class="sidenav-header mb-4">
      
-          <nuxt-link class="navbar-brand" :to="{name:'dashboard'}">
-                <img :src="logo"  alt="Sidebar logo">
+          <nuxt-link class="navbar-brand" :to="{name:'index'}">
+                <img :src="logo"  alt="It praksa, saveti i preporuke">
           </nuxt-link>        
         
       </div>
@@ -54,7 +54,7 @@ export default {
     },
     logo: {
       type: String,
-      default: "/img/brand/slogan 1.webp",
+      default: "/img/brand/logoitpraksa.png",
       description: "It praksa",
     },
     backgroundColor: {

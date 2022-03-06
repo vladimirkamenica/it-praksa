@@ -1,19 +1,19 @@
 <template>
   <div class="wrapper">
     <notifications></notifications>
-    <side-bar ref="sideBar" :class="display" logo="/img/brand/slogan 1.webp">
+    <side-bar ref="sideBar" :class="display" logo="/img/brand/logoitpraksa.png">
       <template slot-scope="props" slot="links">
         <b-container >
           <b-row>
             <b-col @click="siderbarDisable">
-               <i class="ni ni-shop  mr-2 widthSidebar"></i>
-               <nuxt-link class="text-dark" :to="{name:'dashboard'}">Početna</nuxt-link>
+               <i class="far fa-home mr-2 widthSidebar"></i>
+               <nuxt-link class="text-dark" :to="{name:'index'}">Početna</nuxt-link>
             </b-col>
           </b-row>
           <b-row class="mt-2">
             <b-col @click="siderbarDisable">
                <i class="far fa-newspaper  mr-2 widthSidebar"></i>
-               <nuxt-link  class="text-dark"  :to="{name:'it-vesti'}">It vesti</nuxt-link>
+               <nuxt-link  class="text-dark"  :to="{name:'it-vesti'}">IT vesti</nuxt-link>
             </b-col>
           </b-row>
           <b-row class="mt-2" v-for="video in categories" :key="video.id">
@@ -22,10 +22,16 @@
                <nuxt-link class="text-dark"  :to="{name:'categoryvideo',params:{categoryvideo:srtToLatPath(video.video_category)}}">{{video.video_category}}</nuxt-link>
             </b-col>
           </b-row>
-           <b-row class="mt-2">
+          <b-row class="mt-2">
             <b-col @click="siderbarDisable">
                <i class="far fa-address-card mr-2 widthSidebar"></i>
                <nuxt-link class="text-dark"  :to="{name:'o-nama'}">O nama</nuxt-link>
+            </b-col>
+          </b-row>
+           <b-row class="mt-2">
+            <b-col @click="siderbarDisable">
+               <i class="far fa-desktop mr-2 widthSidebar"></i>
+               <nuxt-link class="text-dark"  :to="{name:'usluge'}">Usluge</nuxt-link>
             </b-col>
           </b-row>
           <b-row class="mt-2">
@@ -60,7 +66,7 @@
         :type="$route.name === 'alternative' ? 'light' : 'default'"
       ></dashboard-navbar>
 
-      <div @click="$sidebar.displaySidebar(false)">
+      <div @click="siderbarDisable">
         
         <nuxt></nuxt>
       </div>
@@ -114,7 +120,7 @@ export default {
  
   methods: {
     srtToLatPath(title){
-     return srToLat(title).split(' ').join('-').toLowerCase().replace(/[?]/g,'');
+     return srToLat(title.toLowerCase()).split(' ').join('-').toLowerCase().replace(/[?]/g,'');
     },
     initScrollbar() {
       let isWindows = navigator.platform.startsWith("Win");

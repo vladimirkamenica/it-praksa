@@ -9,106 +9,63 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-          <ul class="nav nav-footer mt-1 ">
-           
-          <li class="nav-item mr-3">
-           <NuxtLink style="color: #8898aa !important; font-size: 0.875rem;" :to="{name:'uslovi'}">Uslovi korišćenja</NuxtLink>
-          </li>
-          <li class="nav-item mr-3">
-            <NuxtLink style="color: #8898aa !important; font-size: 0.875rem;" :to="{name:'privatnost'}">Politika privatnosti</NuxtLink>
-          </li>
-          <li class="nav-item mr-3">
-            <NuxtLink style="color: #8898aa !important; font-size: 0.875rem;" :to="{name:'marketing'}"> Marketing</NuxtLink>
-          </li>
-          <li class="nav-item">
-            <NuxtLink style="color: #8898aa !important; font-size: 0.875rem;" :to="{name:'kontakt'}">Kontakt</NuxtLink>
-          </li>
-          
-          </ul> 
+           <NuxtLink class="footer-color-nuxt" :to="{name:'uslovi'}">Uslovi korišćenja</NuxtLink>
+      </div>
+      <div class="col-auto">
+            <NuxtLink class="footer-color-nuxt" :to="{name:'privatnost'}">Politika privatnosti</NuxtLink>
+      </div>
+      <div class="col-auto">
+            <NuxtLink class="footer-color-nuxt" :to="{name:'marketing'}"> Marketing</NuxtLink>
+      </div>
+      <div class="col-auto">      
+            <NuxtLink class="footer-color-nuxt" :to="{name:'kontakt'}">Kontakt</NuxtLink>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <ul class="nav nav-footer ">
-          <li class="nav-item">
             <a 
-              href="#"
-              class="nav-link"
+              href="https://www.facebook.com/groups/it.praksa"
               target="_blank"
               rel="noopener"
-              > <i class="fab fa-facebook" ></i></a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="#"
-              class="nav-link"
+              > <i class="fab fa-facebook"></i></a>
+      </div>
+      <div class="col-auto">
+              <a
+              href="https://www.instagram.com/itpraksa/"
               target="_blank"
               rel="noopener"
               ><i class="fab fa-instagram"></i></a>
-          </li>
-          <li class="nav-item">
+      </div>
+      <div class="col-auto">
             <a
-              href="#"
-              class="nav-link"
+              href="https://twitter.com/itpraksa"
               target="_blank"
               rel="noopener"
               ><i class="fab fa-twitter"></i></a>
-          </li>
-          <li class="nav-item">
+      </div>
+      <div class="col-auto">
             <a
-              href="#"
-              class="nav-link"
+              href="https://www.youtube.com/channel/UClDx0-NU9750KOHm3QF-LaQ"
               target="_blank"
               rel="noopener"
               ><i class="fab fa-youtube"></i></a>
-          </li>
-
-          <li class="nav-item">
+      </div>
+      <div class="col-auto">
             <a
-              href="#"
-              class="nav-link"
+              href="https://business.google.com/n/8830104708040202315/profile?hl=sr&fid=11609997360109208568"
               target="_blank"
               rel="noopener"
               ><i class="fab fa-google"></i></a>
-          </li>
-          
-          </ul>
+      </div>
+       <div class="col-auto">
+            <a
+              href="https://www.linkedin.com/company/esenca-software/"
+              target="_blank"
+              rel="noopener"
+              ><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
-    <!--
-    <div class="row align-items-center justify-content-lg-between">
-      <div class="col-lg-12">
-        <div class="copyright text-center text-lg-right text-muted">
-         Copyright © {{ year }} IT Praksa.com Sva prava su zadržana.
-        </div>
-    </div> -->
-
-    
-        <!--
-      <div class="col-lg-6">
-        <div class="copyright text-center text-lg-right text-muted">
-          © {{ year }}, made with <i class="fa fa-heart heart"></i> by<a
-            href="https://www.creative-tim.com"
-            class="font-weight-bold ml-1"
-            target="_blank"
-            rel="noopener"
-            >Creative Tim</a
-          >
-          and<a
-            href="https://www.updivision.com"
-            class="font-weight-bold ml-1"
-            target="_blank"
-            rel="noopener"
-            >UPDIVISION</a
-          >
-          for a better web.
-        </div>
-      </div> 
-    </div>-->
-    
-      
-       
-      
+ 
   </footer>
 </template>
 <script>
